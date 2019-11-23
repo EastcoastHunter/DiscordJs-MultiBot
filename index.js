@@ -8,38 +8,9 @@ const {aqua,green_light,gold,red_dark, dark_red, red_light} = require("./colours
 bot.on("ready", message => {
   try {
     console.log(bot.user.username + " is online and operational");
-    const cheweyBotAnalyticsAPI = require("discord-bot-analytics");
-    const customAnalytics = new cheweyBotAnalyticsAPI("68faeb7f-cb58-499b-b40c-a7619676979b", bot)
-
   } catch (err) {
     console.log(err);
   }
-});
-bot.on("ready", () => {
-  // Require node-fetch
-  const fetch = require("node-fetch");
-
-  // Make your post request to discordbotlist.com
-  fetch(`https://discordbotlist.com/api/bots/${bot.user.id}/stats`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bot 7adb43f252c97ea213a7822100b4981eae80e560ed1bd8d87fe258f2a002552b`, // Make sure to replace <your-token> with your actual token.
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      shard_id: bot.shard ? bot.shard.count : 0, // Or `bot.shards.size` on Eris
-      guilds: bot.guilds.size, // `guilds` and `users` may not be accurate depending on how many shards you have (Discord.js). You'll have to get them all with broadcastEval
-      users: bot.guilds.reduce((prev, now) => prev + now.memberCount, 0)
-    })
-  }).then(res => res.text());
-
-  const BFDAPI = require("bfdapi.js");
-  const bfd = new BFDAPI(
-    bot.user.id,
-    "6fb6f75626321e5f441b3f38a4f31605905ae976d34eec2c1ba608af72ea035fd391d6eaec70c156c2363171f866972bef9a917ba0528c7d63d6a0ca16e1ca4f"
-  );
-  bfd.postServerCount(bot.guilds.size).then(res => console.log(res));
 });
 // Start of user leave/join events
 bot.on("guildMemberAdd", (member, guild) => {
