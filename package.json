@@ -13,7 +13,7 @@
     "fs": "^0.0.1-security",
     "long": "^4.0.0",
     "moment": "^2.24.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-superfetch": "^0.1.9",
     "nodemon": "^1.19.4",
     "table": "^5.4.6",
